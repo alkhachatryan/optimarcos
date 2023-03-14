@@ -7,5 +7,6 @@ const automobileValidation = require('../../validations/automobile.validation')
 const router = express.Router();
 
 router.post('/', auth(), validate(automobileValidation.createAutomobile), automobileController.create);
+router.get('/', auth(), automobileController.listAutomobiles);
 
 module.exports = router;

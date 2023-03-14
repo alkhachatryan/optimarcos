@@ -7,6 +7,12 @@ const create = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(automobile);
 });
 
+const listAutomobiles = catchAsync(async (req, res) => {
+  const automobiles = await automobileService.listAutomobiles(req.query);
+  res.status(httpStatus.OK).send(automobiles);
+});
+
 module.exports = {
   create,
+  listAutomobiles,
 };

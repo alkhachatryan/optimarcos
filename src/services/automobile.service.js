@@ -11,6 +11,16 @@ const createAutomobile = async (body) => {
   return Automobile.create(body);
 };
 
+/**
+ * List all automobiles
+ * @param {Object} query
+ * @returns {Promise<Automobile>}
+ */
+const listAutomobiles = async (query) => {
+  return Automobile.paginate({}, query);
+};
+
 module.exports = {
   createAutomobile,
+  listAutomobiles,
 };
