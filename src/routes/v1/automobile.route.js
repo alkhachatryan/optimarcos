@@ -9,5 +9,6 @@ const router = express.Router();
 router.post('/', auth(), validate(automobileValidation.createAutomobile), automobileController.create);
 router.get('/', auth(), automobileController.listAutomobiles);
 router.delete('/:automobileId', auth(), validate(automobileValidation.deleteAutomobile), automobileController.deleteAutomobile);
+router.put('/:automobileId', auth(), validate(automobileValidation.updateAutomobile), automobileController.updateAutomobile);
 
 module.exports = router;

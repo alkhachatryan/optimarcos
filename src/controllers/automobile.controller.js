@@ -17,8 +17,14 @@ const deleteAutomobile = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const updateAutomobile = catchAsync(async (req, res) => {
+  const automobile = await automobileService.updateById(req.params.automobileId, req.body);
+  res.status(httpStatus.OK).send(automobile);
+});
+
 module.exports = {
   create,
   listAutomobiles,
-  deleteAutomobile
+  deleteAutomobile,
+  updateAutomobile,
 };

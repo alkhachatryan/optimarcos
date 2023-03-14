@@ -16,7 +16,15 @@ const deleteAutomobile = {
   }),
 };
 
+const updateAutomobile = {
+  param: Joi.object().keys({
+    automobileId: Joi.required().custom(objectId),
+  }),
+  ...createAutomobile,
+};
+
 module.exports = {
   createAutomobile,
   deleteAutomobile,
+  updateAutomobile,
 };
