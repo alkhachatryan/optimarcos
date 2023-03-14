@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { objectId } = require('./custom.validation');
 
 const createAutomobile = {
   body: Joi.object().keys({
@@ -9,6 +10,13 @@ const createAutomobile = {
   }),
 };
 
+const deleteAutomobile = {
+  param: Joi.object().keys({
+    automobileId: Joi.required().custom(objectId),
+  }),
+};
+
 module.exports = {
-  createAutomobile
+  createAutomobile,
+  deleteAutomobile,
 };

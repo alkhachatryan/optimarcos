@@ -12,7 +12,13 @@ const listAutomobiles = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(automobiles);
 });
 
+const deleteAutomobile = catchAsync(async (req, res) => {
+  await automobileService.deleteById(req.params.automobileId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
+
 module.exports = {
   create,
   listAutomobiles,
+  deleteAutomobile
 };
