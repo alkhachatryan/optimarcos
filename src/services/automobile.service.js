@@ -51,9 +51,24 @@ const updateById = async (automobileId, body) => {
   return automobile;
 };
 
+/**
+ * Get automobile by id
+ * @param {ObjectId} automobileId
+ * @returns {Promise<Automobile>}
+ */
+const getById = async (automobileId) => {
+  const automobile = await Automobile.findById(automobileId);
+  if (!automobile) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Automobile not found');
+  }
+
+  return automobile;
+};
+
 module.exports = {
   createAutomobile,
   listAutomobiles,
   deleteById,
   updateById,
+  getById,
 };

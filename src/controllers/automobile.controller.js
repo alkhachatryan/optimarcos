@@ -22,9 +22,15 @@ const updateAutomobile = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(automobile);
 });
 
+const getAutomobile = catchAsync(async (req, res) => {
+  const automobile = await automobileService.getById(req.params.automobileId);
+  res.status(httpStatus.OK).send(automobile);
+});
+
 module.exports = {
   create,
   listAutomobiles,
   deleteAutomobile,
   updateAutomobile,
+  getAutomobile,
 };

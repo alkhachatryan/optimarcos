@@ -10,5 +10,6 @@ router.post('/', auth(), validate(automobileValidation.createAutomobile), automo
 router.get('/', auth(), automobileController.listAutomobiles);
 router.delete('/:automobileId', auth(), validate(automobileValidation.deleteAutomobile), automobileController.deleteAutomobile);
 router.put('/:automobileId', auth(), validate(automobileValidation.updateAutomobile), automobileController.updateAutomobile);
+router.get('/:automobileId', auth(), validate(automobileValidation.getAutomobile), automobileController.getAutomobile);
 
 module.exports = router;
