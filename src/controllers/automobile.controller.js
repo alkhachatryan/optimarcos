@@ -4,7 +4,7 @@ const { automobileService } = require('../services');
 
 const create = catchAsync(async (req, res) => {
   const automobile = await automobileService.createAutomobile(req.body);
-  res.status(httpStatus.OK).send(automobile);
+  res.status(httpStatus.CREATED).send(automobile);
 });
 
 const listAutomobiles = catchAsync(async (req, res) => {
