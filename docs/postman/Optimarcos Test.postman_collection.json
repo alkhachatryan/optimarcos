@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "15e55aba-d88c-4743-98ad-dc1eecb803ec",
+		"name": "Optimarcos Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.collectionVariables.set('access_token', response.tokens.access.token)",
+									"pm.collectionVariables.set('refresh_token', response.tokens.refresh.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"qwerqwer@gmail.com\",\n    \"password\": \"qwerqwer1!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/v1/auth/login",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.collectionVariables.set('access_token', response.tokens.access.token)",
+									"pm.collectionVariables.set('refresh_token', response.tokens.refresh.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"qwerqwhhhxcvbxcvbhhghher@gmail.com\",\n    \"password\": \"qwerqwer1!\",\n    \"name\": \"test name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/v1/auth/register",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/v1/auth/logout",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh tokens",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.collectionVariables.set('access_token', response.access.token)",
+									"pm.collectionVariables.set('refresh_token', response.refresh.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/v1/auth/refresh-tokens",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"refresh-tokens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send verification email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/v1/auth/send-verification-email",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"send-verification-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseurl}}/v1/auth/verify-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDEwYmRiZTg4YTJiZDI2ZjRmMDA2NDgiLCJpYXQiOjE2Nzg4MTg5NjksImV4cCI6MTY3ODgxOTU2OSwidHlwZSI6InZlcmlmeUVtYWlsIn0.oZOozvq_Wp4gRotpWNeWwWR6lg9_gXKmLnTPPp5sR3Y",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"verify-email"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDEwYmRiZTg4YTJiZDI2ZjRmMDA2NDgiLCJpYXQiOjE2Nzg4MTg5NjksImV4cCI6MTY3ODgxOTU2OSwidHlwZSI6InZlcmlmeUVtYWlsIn0.oZOozvq_Wp4gRotpWNeWwWR6lg9_gXKmLnTPPp5sR3Y"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Automobiles",
+			"item": [
+				{
+					"name": "Create automobile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dffds\",\n    \"brand\": \"dd\",\n    \"price\": \"333353\",\n    \"productionYear\": \"1990\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/v1/automobiles",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"automobiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete automobile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/v1/automobiles/6410c9e94e6cfc4637ff98af",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"automobiles",
+								"6410c9e94e6cfc4637ff98af"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update automobile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"dffds\",\n    \"brand\": \"dd\",\n    \"price\": \"333353\",\n    \"productionYear\": \"1990\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/v1/automobiles/6410c77a50d5a641dee0ecea",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"automobiles",
+								"6410c77a50d5a641dee0ecea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all automobiles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/v1/automobiles?sortBy=&page=4&limit=1&brand=",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"automobiles"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": "4"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "brand",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get automobile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseurl}}/v1/automobiles/6410c77c50d5a641dee0eced",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"v1",
+								"automobiles",
+								"6410c77c50d5a641dee0eced"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": ""
+		},
+		{
+			"key": "baseurl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "refresh_token",
+			"value": ""
+		}
+	]
+}
